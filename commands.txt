@@ -1,0 +1,23 @@
+Commands used in
+
+The Naked Mole Rat Genome Resource: facilitating analyses of cancer and longevity-related adaptations
+by
+Keane et al.
+
+
+Genome assembly with ALLPATHS-LG version R38830:
+
+RunAllPathsLG K=96 THREADS=40 TARGETS=submission EVALUATION=BASIC OVERWRITE=True MIN_CONTIG=500
+
+
+Ka/Ks ratios estimation with CodeML (from PAML package v3.14) within BioPerl v5.16:
+
+my $kaks_factory = Bio::Tools::Run::Phylo::PAML::Codeml->new(-params => {'runmode' => -2, 'seqtype' => 1, });
+$kaks_factory->alignment($dna_aln);
+my ($rc, $parser) = $kaks_factory->run();
+
+
+Functional enrichment using DAVID 6.7:
+
+For functional annotation we entered the top 5% of genes as a gene list and all genes analysed as background. Otherwise default parameters were used.
+
